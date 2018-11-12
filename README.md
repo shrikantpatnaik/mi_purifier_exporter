@@ -6,10 +6,17 @@ This is only tested with the Mi Purifier 2S, but should work with any purifier s
 
 For help on getting the ip and/or token please look at the [python-miio](https://python-miio.readthedocs.io/en/latest/discovery.html#tokens-from-backups) docs.
 
+If you are on iOS and find a 96 character token, please read the [Decrypting iOS Token](#decrypting-ios-token) section
 
-##Usage
+The format for the JSON file can be seen at [example_purifiers.json](/example_purifiers.json)
+
+## Usage
 
 ```bash
-python exporter.py purifiers.json
+python exporter.py PATH_TO_JSON
 ```
 
+## Decrypting iOS Token
+```bash
+python decrypt_ios_token.py TOKEN
+```
