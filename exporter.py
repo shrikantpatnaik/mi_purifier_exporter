@@ -4,6 +4,7 @@ import sys
 
 from miio import airpurifier
 
+# noinspection PyProtectedMember
 from prometheus_client import start_http_server, Gauge, Info
 
 PORT_NUMBER = 8000
