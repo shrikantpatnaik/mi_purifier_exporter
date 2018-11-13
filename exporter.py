@@ -7,8 +7,6 @@ from miio import airpurifier, exceptions
 # noinspection PyProtectedMember
 from prometheus_client import start_http_server, Gauge, Info
 
-PORT_NUMBER = 8000
-
 status = None
 
 aqi = Gauge('mi_purifier_aqi', 'AQI from Purifier', ['name'])
@@ -23,6 +21,8 @@ def exit_with_error(error):
 
 
 if __name__ == '__main__':
+    port_number = 8000
+
     if len(sys.argv) < 2:
         exit_with_error("JSON file must be passed as first argument")
 
@@ -35,7 +35,9 @@ if __name__ == '__main__':
     for purifier in purifiers["purifiers"]:
         purifier["object"] = airpurifier.AirPurifier(ip=purifier["ip"], token=purifier["token"])
 
-    start_http_server(PORT_NUMBER)
+    if len(sys.argv) > 2:
+        port_number = int(sys.argv[2])
+    start_http_server(port_number)
 
     while True:
         time.sleep(1)
