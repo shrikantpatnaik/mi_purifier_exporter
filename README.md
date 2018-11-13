@@ -13,10 +13,14 @@ The format for the JSON file can be seen at [example_purifiers.json](/example_pu
 ## Usage
 
 ```bash
+pip install -r requirements.txt
+ 
 python exporter.py PATH_TO_JSON
 ```
 
 ## Decrypting iOS Token
 ```bash
+pip install pycrypto
+
 python decrypt_ios_token.py TOKEN
 ```
